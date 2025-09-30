@@ -10,6 +10,9 @@ class MyForm(QDialog):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.ui.rgbR.setValue(255)
+        self.ui.rgbG.setValue(255)
+        self.ui.rgbB.setValue(255)
         self.ui.rgbR.valueChanged.connect(self.slider_change)
         self.ui.rgbG.valueChanged.connect(self.slider_change)
         self.ui.rgbB.valueChanged.connect(self.slider_change)
@@ -32,9 +35,9 @@ class MyForm(QDialog):
         g = self.ui.rgbG.value()
         b = self.ui.rgbB.value()
 
-        if self.ui.take.clicked:
-            self.ui.rgbTake.setStyleSheet("background-color: rgb({}, {}, {});".format(r, g, b))
-            self.ui.rgbTake.setText(f"{r}, {g}, {b}")
+        self.ui.rgbTake.setStyleSheet("background-color: rgb({}, {}, {});".format(r, g, b))
+        self.ui.rgbTake.setText(f"{r}, {g}, {b}")
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MyForm()
